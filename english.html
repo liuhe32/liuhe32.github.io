@@ -19,13 +19,13 @@
             width: 90%;
             flex-wrap: wrap;
             flex-direction: row;
-            padding: 10px;
+
         }
 
         .item {
             flex: 1;
 
-
+            padding: 10px;
         }
 
         .column {
@@ -177,16 +177,15 @@ transform: rotate(45deg); //箭头方向可以自由切换角度
         <div class="header item column online">
             <span v-if="login=0"> 登录 </span>
             <span v-else="login=1" v-text="user.username"> |</span><br>
-            <input type="search" placeholder="输入英语，点Enter查询..." v-model="keywords" @keydown.enter="search" @keyup="getData($event)" @search="search"
-                @blur="hiddenData">
+            <input type="search" placeholder="输入英语，点Enter查询..." v-model="keywords" @keydown.enter="search"
+                @keyup="getData($event)" @search="search" @blur="hiddenData">
 
             <!--  实时的搜索数据显示列表-->
             <!-- <ul class="show_data dropdown-list" v-show="isShow">
 			<li v-for="(item,index) in data" v-bind:key="index">{{item}}</li>
 		</ul> -->
             搜索记录：
-            <span class="search-history" v-for="(item,index) in searchHistory" @click="ressetSearch(item)"
-                >
+            <span class="search-history" v-for="(item,index) in searchHistory" @click="ressetSearch(item)">
                 {{item}} &nbsp;
             </span>
 
@@ -196,10 +195,10 @@ transform: rotate(45deg); //箭头方向可以自由切换角度
             <button @click="ran">随机</button><br>
             <button @click="download">下载</button><br>
         </div>
-        <div class="item item--bordered " >
+        <div class="item item--bordered ">
             <div contenteditable="true"> {{key}}
             </div>
-            <div >
+            <div>
                 <!-- 记录搜索记录 点击的时候回拿到数据值 -->
                 <li v-for="(item,index) in result" v-bind:key="index" @click="ressetSearch(item)">{{item}}</li>
 
@@ -328,8 +327,8 @@ transform: rotate(45deg); //箭头方向可以自由切换角度
                     // 每次输入的时候，让他显示出来
                     this.isShow = true;
                     // 遍历拿到item，并判断值是否和input框相似，一样就添加到result数组中
-                    this.keywords=this.keywords.trim()
-                    if (this.keywords=="") return;
+                    this.keywords = this.keywords.trim()
+                    if (this.keywords == "") return;
                     let _keys = this.json._key;
                     _keys.map((item, index) => {
                         if (item.includes(this.keywords)) {
@@ -345,7 +344,7 @@ transform: rotate(45deg); //箭头方向可以自由切换角度
 
                         this.searchHistory.push(this.keywords);
                     }
-                    if (this.result.length==1){
+                    if (this.result.length == 1) {
                         this.ressetSearch(this.result[0]);
                     }
                 },
@@ -371,12 +370,12 @@ transform: rotate(45deg); //箭头方向可以自由切换角度
                 },
                 // 当他失去焦点的时候，会隐藏实时的列表
                 hiddenData: function () {
-                    console.log("", this.isShow)
+
                     this.isShow = false;
                 },
                 // kw就是传过来的值item，意思就是点击历史记录的词，会重新返回到input输入框
                 ressetSearch: function (kw) {
-                    debugger
+
                     this.keywords = kw;
                     this.key = kw;
                 }
@@ -396,7 +395,7 @@ transform: rotate(45deg); //箭头方向可以自由切换角度
                 },
                 imgsrc: function () {
                     let _key = this.key;
-                    return "../1600/" + _key + ".png"
+                    return "./static/1600/" + _key + ".png"
                 }
             },
             created: function () {
