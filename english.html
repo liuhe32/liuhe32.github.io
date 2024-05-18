@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue2.js"></script>
+    <!--script src="https://unpkg.com/axios/dist/axios.min.js"></script-->
+    <script>
+        window.jsonData = `{"_key":["best","count","fish","round","meal","arm","son","long","play","have","deer","other","out","use","east","dear","head","tea","read","now","your","sea","father","keep","eight","light","right","here","tool","cool","foot","monkey","tire","warm","green","dress","act","man","turn","one","chick","rock","will","black","side","art","car","watch","five","old","end","shop","coat","cake","all","port","late","police","quick","live","hen","are","ice","world","our","night","ant","lay","book","part","shame","like","main","orange","ski","smell","age","room","start","life","sing","ear","ever","over","love","member","low","how","row","coke","rob","complain","rub","chess","way","while","bit","under","she","it","trade","pan","write","warm","wait","any","sit","six","bag","bind","lunch","sad","pardon","back","famous","proper","child","prefer","library","blue","nation","day","popular","able","table","trouble","desk","subject","sail","bridge","expect","him","collect","pea","pen","hole","grate","ware","some","name","form","even","interest","view","rise","contract","silent","boss","comment","percent","dry","soil","pig","different","top","boy","empty","for","frog","fix","must","nature","after","record","granny","clap","sure","let","rush","pub","ten","exit","was","ill","sun","purse","exam","sale","talk","his","letter","bus","duck","prove","thank","seek","face","post","air","tell","come","nine","nose","doll","ring","last","tie","rain","seed","tree","past","rice","fork"],"_map":{},"_outmap":[["best",[]],["count",[]],["fish",[]],["round",[]],["meal",[]],["arm",[]],["son",[]],["long",[]],["play",[]],["have",[]],["deer",[]],["other",[]],["out",[]],["use",[]],["east",[]],["dear",[]],["head",[]],["tea",[]],["read",[]],["now",[]],["your",[]],["sea",[]],["father",[]],["keep",[]],["eight",[]],["light",[]],["right",[]],["here",[]],["tool",[]],["cool",[]],["foot",[]],["monkey",[]],["tire",[]],["warm",[]],["green",[]],["dress",[]],["act",["actor","actress","tractor","attract","attack","attention","mention","actually","action","active","activity"]],["man",[]],["turn",[]],["one",[]],["chick",[]],["rock",[]],["will",[]],["black",[]],["side",[]],["art",[]],["car",[]],["watch",[]],["five",[]],["old",[]],["end",[]],["shop",[]],["coat",[]],["cake",[]],["all",[]],["port",[]],["late",[]],["police",[]],["quick",[]],["live",[]],["hen",[]],["are",[]],["ice",[]],["world",[]],["our",[]],["night",[]],["ant",[]],["lay",[]],["book",[]],["part",[]],["shame",[]],["like",[]],["main",[]],["orange",[]],["ski",[]],["smell",[]],["age",[]],["room",[]],["start",[]],["life",[]],["sing",[]],["ear",[]],["ever",[]],["over",[]],["love",[]],["member",[]],["low",[]],["how",[]],["row",[]],["coke",[]],["rob",[]],["complain",[]],["rub",[]],["chess",[]],["way",[]],["while",[]],["bit",[]],["under",[]],["she",[]],["it",[]],["trade",[]],["pan",[]],["write",[]],["wait",[]],["any",[]],["sit",[]],["six",[]],["bag",[]],["bind",[]],["lunch",[]],["sad",[]],["pardon",[]],["back",[]],["famous",[]],["proper",[]],["child",[]],["prefer",[]],["library",[]],["blue",[]],["nation",[]],["day",[]],["popular",[]],["able",["table","belief","thief","believable","unable","believe","cabin","cable"]],["table",[]],["trouble",[]],["desk",[]],["subject",[]],["sail",[]],["bridge",[]],["expect",[]],["him",[]],["collect",[]],["pea",[]],["pen",[]],["hole",[]],["grate",[]],["ware",[]],["some",[]],["name",[]],["form",[]],["even",[]],["interest",[]],["view",[]],["rise",[]],["contract",[]],["silent",[]],["boss",[]],["comment",[]],["percent",[]],["dry",[]],["soil",[]],["pig",[]],["different",[]],["top",[]],["boy",[]],["empty",[]],["for",[]],["frog",[]],["fix",[]],["must",[]],["nature",[]],["after",[]],["record",[]],["granny",[]],["clap",[]],["sure",[]],["let",[]],["rush",[]],["pub",[]],["ten",[]],["exit",[]],["was",[]],["ill",[]],["sun",[]],["purse",[]],["exam",[]],["sale",[]],["talk",[]],["his",[]],["letter",[]],["bus",[]],["duck",[]],["prove",[]],["thank",[]],["seek",[]],["face",[]],["post",[]],["air",[]],["tell",[]],["come",[]],["nine",[]],["nose",[]],["doll",[]],["ring",[]],["last",[]],["tie",[]],["rain",[]],["seed",[]],["tree",["free","freeze","freezing","freestyle","reef","three","agree","degree"]],["past",["paste","waste","taste","pass","passport","passage","message","passenger"]],["rice",["rich","price","prince","province","print","since","printer","point"]],["fork",["work","folk","pork","form","homewoek","hometown","home","perform","performance"]]]}`
+    </script>
+
+    </script>
+    <style>
+        .container {
+            display: inline-flex;
+            height: 90vh;
+            width: 90%;
+            flex-wrap: wrap;
+            flex-direction: row;
+            padding: 10px;
+        }
+
+        .item {
+            flex: 1;
+
+
+        }
+
+        .column {
+            flex-basis: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .online {
+
+            width: 98vw;
+            height: 10vh;
+            min-height: 28px;
+            max-height: 30px;
+        }
+
+        .item--bordered {
+            border: 1px solid black;
+
+            width: calc(100vw / 3);
+
+        }
+
+        .arrow-right {
+            display: flex;
+            width: 100px;
+            height: 100px;
+            margin: 100px;
+        }
+
+        .arrow-right span {
+            width: 25px;
+            height: 25px;
+            position: relative;
+            margin: 0 5px;
+        }
+
+        .arrow-right span:before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 50%;
+            right: 0;
+            width: 0;
+            height: 0;
+            border: 25px solid;
+            margin-top: -25px;
+            border-color: transparent transparent transparent #f02c57;
+            /* 箭头颜色 */
+        }
+
+        .arrow-right span:after {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            /*位置偏移，决定箭头的粗细*/
+            width: 0;
+            height: 0;
+            border: 25px solid;
+            margin-top: -25px;
+            border-color: transparent transparent transparent #fff;
+            /* 与模块底色相同*/
+        }
+
+        /*  .arrow-right {
+
+width: 60px;
+
+height: 60px;
+
+background-color: transparent; //模块背景为透明 
+
+border-color: #f02c57;
+
+border-style: solid;
+
+border-width: 6px 6px 0 0;
+
+margin: 300px auto;
+
+transform: rotate(45deg); //箭头方向可以自由切换角度
+
+}*/
+        .arrow-right1 {
+            width: 100px;
+            height: 100px;
+            margin: 300px auto;
+            display: flex;
+        }
+
+        .arrow-right1::before,
+        .arrow-right1:after {
+            content: "";
+            width: 100px;
+            height: 100px;
+            background-color: transparent;
+            /* 模块背景为透明 */
+            border-color: #f02c57;
+            border-style: solid;
+            border-width: 6px 6px 0 0;
+            transform: rotate(45deg);
+        }
+
+        button {
+            display: inline;
+        }
+
+        /* 写样式  
+        原文链接：https://blog.csdn.net/weixin_46419373/article/details/105703946
+        */
+        .show_data {
+            border: 1px solid #999;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            width: 154px;
+            padding: 10px 5px;
+        }
+
+        .search-history {
+            color: #222;
+            cursor: pointer;
+        }
+
+        .search-history:hover {
+            color: red;
+        }
+
+        .dropdown-list {
+            position: absolute;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 5px;
+            z-index: 30;
+            /* 悬浮在输入框下方 */
+            top: calc(100% + 5px);
+            left: 0;
+            /* 设置最大高度以防止溢出 */
+            max-height: 200px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" class="container">
+        <div class="header item column online">
+            <span v-if="login=0"> 登录 </span>
+            <span v-else="login=1" v-text="user.username"> |</span><br>
+            <input type="search" placeholder="输入英语，点Enter查询..." v-model="keywords" @keydown.enter="search" @keyup="getData($event)" @search="search"
+                @blur="hiddenData">
+
+            <!--  实时的搜索数据显示列表-->
+            <!-- <ul class="show_data dropdown-list" v-show="isShow">
+			<li v-for="(item,index) in data" v-bind:key="index">{{item}}</li>
+		</ul> -->
+            搜索记录：
+            <span class="search-history" v-for="(item,index) in searchHistory" @click="ressetSearch(item)"
+                >
+                {{item}} &nbsp;
+            </span>
+
+
+            <button v-on:click="pre">上一个</button><br>
+            <button @click="next">下一个</button><br>
+            <button @click="ran">随机</button><br>
+            <button @click="download">下载</button><br>
+        </div>
+        <div class="item item--bordered " >
+            <div contenteditable="true"> {{key}}
+            </div>
+            <div >
+                <!-- 记录搜索记录 点击的时候回拿到数据值 -->
+                <li v-for="(item,index) in result" v-bind:key="index" @click="ressetSearch(item)">{{item}}</li>
+
+            </div>
+        </div>
+        <div class="item container">
+            <div class="arrow-right">
+                <span></span>
+                <span></span>
+            </div>
+            <img v-bind:src="imgsrc" alt="" />
+            <!-- <div class="arrow-right"></div> -->
+            <!-- <div class="arrow-right1"></div> -->
+
+            <div class="arrow-right">
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div class="item item--bordered " v-html="getMsg" contenteditable="true">
+
+            <p>table</p>
+            <p>cable</p>
+            <p>cabin</p>
+            <p>unnable</p>
+            <p>
+                believable
+                believe
+                belief
+                thief
+            </p>
+        </div>
+
+    </div>
+    <script>
+        /*const fileReader = new FileReader();
+        fileReader.readAsText(input.files[0], "UTF-8");
+        fileReader.onload = (e) => {
+        const fileContent = e.target.result;
+        const jsonData = JSON.parse(fileContent);
+        */
+        // 在这里修改jsonData的内容
+
+        // 写入修改后的JSON数据到本地文件中
+        function download(jsonData) {
+            const blob = new Blob([JSON.stringify(jsonData)], {type: "text/plain;charset=utf-8"});
+            const a = document.createElement("a");
+            a.href = URL.createObjectURL(blob);
+            a.download = "en1600.json";
+            a.click();
+        };
+
+        var app = new Vue({
+            el: "#app",
+            data: {
+                json: null,
+                key: "act",
+                value: [],
+                message: "",
+
+                login: 1,
+                user: {
+                    username: "summercool"
+                },
+
+                keywords: '', //input框绑定的关键字
+                result: [], //搜索结果，是一个数组
+                data: [], //实时的搜索的数据
+                isShow: false, //判断实时的数据是否要显示  默认是不显示
+                searchHistory: [], //搜索记录
+            }
+            ,
+            methods: {
+                myclick: function () {
+                    app.num++;
+                    console.log(this);
+                },
+                async fetchJson() {
+                    /* try {
+                         const response = await axios.get('../static/json/en.json');
+                         this.json = response.data;
+                     } catch (error) {
+                         console.error(error);
+                     }*/
+                    this.json = JSON.parse(window.jsonData);
+                    this.json._map = new Map(this.json._outmap);
+
+                },
+                pre: function () {
+                    let _key = this.key;
+                    let _keys = this.json._key
+                    let len = _keys.length;
+                    const index = _keys.indexOf(_key);
+                    if (index > 0) {
+                        this.key = _keys[index - 1];
+                    } else {
+                        this.key = _keys[len - 1];
+                    }
+                }
+                , next: function () {
+                    let _key = this.key;
+                    let _keys = this.json._key
+                    let len = _keys.length;
+                    const index = _keys.indexOf(_key);
+                    if (index < len - 1) {
+                        this.key = _keys[index + 1];
+                    } else {
+                        this.key = _keys[0];
+                    }
+
+                }
+                , ran: function () {
+                    let _keys = this.json._key
+                    let len = _keys.length - 1;
+                    let ran = Math.floor(Math.random() * len);
+                    this.key = _keys[ran];
+                }
+                , login: function () {debugger}
+                , download: function () {
+                    download(JSON.stringify(this.json));
+                },		//搜索的方法
+                search: function () {
+                    //debugger
+                    // 每次搜索前 把之前的数据清空
+                    this.result = [];
+                    // 每次输入的时候，让他显示出来
+                    this.isShow = true;
+                    // 遍历拿到item，并判断值是否和input框相似，一样就添加到result数组中
+                    this.keywords=this.keywords.trim()
+                    if (this.keywords=="") return;
+                    let _keys = this.json._key;
+                    _keys.map((item, index) => {
+                        if (item.includes(this.keywords)) {
+                            this.result.push(item);
+                        }
+                    });
+                    // 存数据之前  如果历史记录中有的话，就不让添加  ！取反
+                    if (!this.searchHistory.includes(this.keywords)) {
+                        // 搜索记录会添加那些的input框的关键字 限制只能存5个
+                        if (this.searchHistory.length > 4) {
+                            this.searchHistory.shift();
+                        }
+
+                        this.searchHistory.push(this.keywords);
+                    }
+                    if (this.result.length==1){
+                        this.ressetSearch(this.result[0]);
+                    }
+                },
+                // 实时的搜索的数据  根据传的参数，拿到event的对象
+                getData: function (event) {
+
+                    // 监听event的事件  当键盘码是13的话，就让实时的列表隐藏
+                    if (event.keyCode == 13) {
+                        this.isShow = false;
+                        return; //方法结束，不执行
+                    }
+                    // 每次搜索前 把之前的数据清空
+                    this.data = [];
+                    // 当他按下回车的时候也没有，即，不会显示实时更新的一部分
+                    this.isShow = true;
+                    let _keys = this.json._key
+                    _keys.map((item, index) => {
+                        if (item.includes(this.keywords)) {
+                            this.data.push(item);
+                        }
+                    })
+
+                },
+                // 当他失去焦点的时候，会隐藏实时的列表
+                hiddenData: function () {
+                    console.log("", this.isShow)
+                    this.isShow = false;
+                },
+                // kw就是传过来的值item，意思就是点击历史记录的词，会重新返回到input输入框
+                ressetSearch: function (kw) {
+                    debugger
+                    this.keywords = kw;
+                    this.key = kw;
+                }
+
+
+            },
+            computed: {// 计算属性的 getter
+                getMsg: function () {
+                    let _key = this.key;
+                    if (!!this.json) {
+
+                        let _value = this.json._map.get(_key)
+                        this.value = _value
+                    }
+
+                    return this.value.toString().replaceAll(",", "<br>")
+                },
+                imgsrc: function () {
+                    let _key = this.key;
+                    return "../1600/" + _key + ".png"
+                }
+            },
+            created: function () {
+                this.fetchJson();
+            }
+        });
+
+        // v-model=“表达式” 数据双向绑定
+        // v-text=“表达式”  设置标签中的文本
+        // v-html=“表达式”  设置标签中的html
+        // v-if(else else if)=“表达式”    判断条件
+        // v-for=“表达式”   循环
+        // v-on=“表达式”    注册事件
+    </script>
+</body>
+
+</html>
