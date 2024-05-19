@@ -377,7 +377,14 @@ transform: rotate(45deg); //箭头方向可以自由切换角度
                 ressetSearch: function (kw) {
 
                     this.keywords = kw;
-                    this.key = kw;
+                    let _keys = this.json._key
+                    
+                    const index = _keys.indexOf(kw);
+                    if (index >= 0){
+                        this.key = kw;
+                    }else{
+                        this.result = [];
+                    }
                 }
 
 
@@ -391,7 +398,7 @@ transform: rotate(45deg); //箭头方向可以自由切换角度
                         this.value = _value
                     }
 
-                    return this.value.toString().replaceAll(",", "<br>")
+                    return !this.value?this.value:this.value.toString().replaceAll(",", "<br>");
                 },
                 imgsrc: function () {
                     let _key = this.key;
